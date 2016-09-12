@@ -1,0 +1,10 @@
+options:
+  aci-repo:
+    type: string
+    default: 'deb http://a.b.c.d'
+    description: "Apt repository for ACI module"
+  aci-repo-key:
+    type: string
+    default:
+    description: "Apt repo key, if not specified, will allow unauthenticated installs"
+

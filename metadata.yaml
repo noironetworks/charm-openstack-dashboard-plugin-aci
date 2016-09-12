@@ -1,0 +1,15 @@
+name: aci-gbp-dashboard
+summary: Something
+maintainer: Ratnakar Kolli <rkolli@noironetworks.com>
+description: |
+  Something
+categories:
+  - openstack
+subordinate: true
+requires:
+  openstack-dashboard:
+    interface: juju-info
+    scope: container
+#peers:
+#  peer-relation:
+#    interface: interface-name
