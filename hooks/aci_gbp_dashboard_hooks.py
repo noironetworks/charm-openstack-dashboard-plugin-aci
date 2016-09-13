@@ -21,6 +21,11 @@ hooks = Hooks()
 def aci_gbp_dashboard_config_changed(relation_id=None):
     pass
 
+#@hooks.hook('dashboard-plugin-relation-joined')
+#@hooks.hook('dashboard-plugin-relation-changed')
+#def plugin_relation_changed(relation_id=None):
+#    pass
+
 @hooks.hook()
 @hooks.hook('install')
 def aci_gbp_dashboard_install(relation_id=None):

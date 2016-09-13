@@ -10,6 +10,6 @@ requires:
   openstack-dashboard:
     interface: juju-info
     scope: container
-#peers:
-#  peer-relation:
-#    interface: interface-name
+  dashboard-plugin:
+    interface: dashboard-plugin
+    scope: container
