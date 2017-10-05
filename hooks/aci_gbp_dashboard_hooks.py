@@ -43,6 +43,8 @@ def aci_gbp_dashboard_install(relation_id=None):
 
     fetch.apt_install('group-based-policy-ui', options=opt, fatal=True)
     
+    subprocess.check_call(['/usr/share/openstack-dashboard/manage.py', 'collectstatic', '--noinput'])
+    
 def main():
     try:
         hooks.execute(sys.argv)
