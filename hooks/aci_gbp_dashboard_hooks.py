@@ -31,17 +31,12 @@ def aci_gbp_dashboard_config_changed(relation_id=None):
 def aci_gbp_dashboard_install(relation_id=None):
     conf = config()
 
-    if config('aci-repo-key'):
-        fetch.add_source(config('aci-repo'), key=config('aci-repo-key'))
-        opt = []
-    else:
-        fetch.add_source(config('aci-repo'))
-        opt = ['--allow-unauthenticated']
+    fetch.add_source(config('aci-repo'), key=config('aci-repo-key'))
 
     fetch.apt_update(fatal=True)
-    fetch.apt_upgrade(fatal=True, options=opt)
+    fetch.apt_upgrade(fatal=True)
 
-    fetch.apt_install('group-based-policy-ui', options=opt, fatal=True)
+    fetch.apt_install('group-based-policy-ui', fatal=True)
     
     subprocess.check_call(['/usr/share/openstack-dashboard/manage.py', 'collectstatic', '--noinput'])
     
