@@ -1,4 +1,4 @@
-name: openstack-dashboard-plugin-gbp
+name: openstack-dashboard-plugin-aci
 summary: Provides GBP plugin additions to openstack dashboard
 maintainer: Ratnakar Kolli <rkolli@noironetworks.com>
 description: |
