@@ -5,6 +5,9 @@ description: |
   Something
 categories:
   - openstack
+series:
+  - xenial
+  - bionic
 subordinate: true
 requires:
   openstack-dashboard:
