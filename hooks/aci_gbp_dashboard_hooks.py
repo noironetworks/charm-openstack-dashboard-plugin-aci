@@ -35,6 +35,8 @@ def aci_gbp_dashboard_install(relation_id=None):
         fetch.add_source(config('aci-repo'), key=config('aci-repo-key'))
         opt = []
     else:
+        with open('/etc/apt/apt.conf.d/90insecure', 'w') as ou:
+           ou.write('Acquire::AllowInsecureRepositories "true";')
         fetch.add_source(config('aci-repo'))
         opt = ['--allow-unauthenticated']
 
