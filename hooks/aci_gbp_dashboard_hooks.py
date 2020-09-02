@@ -15,6 +15,12 @@ from charmhelpers.core.hookenv import (
 )
 from charmhelpers import fetch
 
+from charmhelpers.contrib.openstack.utils import (
+    os_release,
+    CompareOpenStackReleases,
+)
+
+
 hooks = Hooks()
 
 @hooks.hook('config-changed')
@@ -43,7 +49,12 @@ def aci_gbp_dashboard_install(relation_id=None):
     fetch.apt_update(fatal=True)
     fetch.apt_upgrade(fatal=True, options=opt)
 
-    fetch.apt_install('group-based-policy-ui', options=opt, fatal=True)
+    myrelease = os_release('openstack-dashboard')
+
+    if CompareOpenStackReleases(myrelease) > 'queens':
+        fetch.apt_install('python3-group-based-policy-ui', options=opt, fatal=True)
+    else:
+        fetch.apt_install('group-based-policy-ui', options=opt, fatal=True)
     
     subprocess.check_call(['/usr/share/openstack-dashboard/manage.py', 'collectstatic', '--noinput'])
     
