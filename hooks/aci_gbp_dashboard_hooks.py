@@ -56,7 +56,12 @@ def aci_gbp_dashboard_install(relation_id=None):
     else:
         fetch.apt_install('group-based-policy-ui', options=opt, fatal=True)
     
-    subprocess.check_call(['/usr/share/openstack-dashboard/manage.py', 'collectstatic', '--noinput'])
+    release = CompareOpenStackReleases(os_release('openstack-dashboard'))
+    if release >= 'rocky':
+        python = 'python3'
+    else:
+        python = 'python2'
+    subprocess.check_call([python, '/usr/share/openstack-dashboard/manage.py', 'collectstatic', '--noinput'])
     
 def main():
     try:
