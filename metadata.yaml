@@ -9,6 +9,7 @@ series:
   - xenial
   - bionic
   - focal
+  - jammy
 subordinate: true
 requires:
   openstack-dashboard:
