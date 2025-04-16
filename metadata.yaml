@@ -10,6 +10,7 @@ series:
   - bionic
   - focal
   - jammy
+  - noble
 subordinate: true
 requires:
   openstack-dashboard:
